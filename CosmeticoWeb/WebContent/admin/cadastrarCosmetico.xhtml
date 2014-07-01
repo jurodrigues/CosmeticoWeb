@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="../WEB-INF/templates/padrao.xhtml">
+	<ui:define name="titulo">Cadastrar Cosmeticos</ui:define>
+
+	<ui:define name="conteudo">
+		<h:form role="form" enctype="multipart/form-data">
+			<h:inputHidden value="#{cosmeticosMb.cosmetico.id}"/>
+			<div class="form-group">
+				<h:outputLabel value="Nome" />
+				<h:inputText styleClass="form-control"
+					value="#{cosmeticosMb.cosmetico.nome}">
+				</h:inputText>
+			</div>	
+			<div class="form-group">
+				<h:outputLabel value="Fornecedor" />
+				<h:selectOneMenu styleClass="form-control"
+					value="#{cosmeticosMb.cosmetico.fornecedor}">
+					<f:selectItem itemLabel="--" />
+					<f:selectItems value="#{fornecedorMb.fornecedores}" var="fornecedor" 
+					itemLabel="#{fornecedor.nome}" itemValue="#{fornecedor}" />
+				</h:selectOneMenu>
+			</div>
+			<div class="form-group">
+				<h:outputLabel value="Descricao" />
+				<h:inputText styleClass="form-control"
+					value="#{cosmeticosMb.cosmetico.descricao}">
+				</h:inputText>
+			</div>	
+			<div class="form-group">
+				<h:outputLabel value="Valor" />
+				<h:inputText styleClass="form-control"
+					value="#{cosmeticosMb.cosmetico.valor}">
+				</h:inputText>
+			</div>	
+			<div class="form-group">
+				<h:outputLabel value="Foto" />
+				<h:inputFile value="#{cosmeticosMb.foto}">
+					<f:validator validatorId="br.senai.sc.ti20122n.pw.cosmeticosweb.validator.ImagemValidator" />
+				</h:inputFile>
+				<h:inputHidden value="#{cosmeticosMb.cosmetico.foto}" />
+				<h:graphicImage styleClass="img-responsive" rendered="#{!empty cosmeticosMb.cosmetico.foto}"
+					value="#{cosmeticosMb.getCaminhoRelativo(cosmeticosMb.cosmetico.foto)}" />
+			</div>
+			<h:commandButton styleClass="btn btn-success" value="Salvar"
+				action="#{cosmeticosMb.salvar}" />
+			<button type="reset" class="btn btn-default">Restaurar</button>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

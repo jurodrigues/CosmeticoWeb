@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="WEB-INF/templates/padrao.xhtml">
+	<ui:define name="titulo">Cosmeticos Aroma</ui:define>
+
+	<ui:define name="conteudo">
+		<f:metadata>
+			<f:viewParam name="idProduto" value="#{cosmeticosMb.idCosmetico}" />
+			<f:event type="preRenderView"
+				listener="#{cosmeticosMb.abreCosmetico}" />
+		</f:metadata>
+		<div>
+			<h1>
+				<h:outputLabel value="#{cosmeticosMb.cosmetico.nome}" />
+			</h1>
+		</div>
+		<h:graphicImage styleClass="img-responsive"
+			rendered="#{!empty cosmeticosMb.cosmetico.foto}"
+			value="#{cosmeticosMb.getCaminhoRelativo(cosmeticosMb.cosmetico.foto)}" />
+		<br />
+		<h:outputLabel value="Fornecedor:  " />
+		<h:outputLabel value="#{cosmeticosMb.cosmetico.fornecedor.nome}" />
+		<br />
+		<h:outputLabel value="Valor:  " />
+		<h:outputLabel value="#{cosmeticosMb.cosmetico.valor}" />
+		<br />	
+		<div style="float: left; width: 100%;">
+			<h3>
+				<h:outputLabel value="Decrição" />
+			</h3>
+			<h:outputLabel value="#{cosmeticosMb.cosmetico.descricao}" />
+		</div>
+	</ui:define>
+
+</ui:composition>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputScript library="js" name="jquery.min.js" />
+	<h:outputScript library="js" name="bootstrap.min.js" />
+
+	<title><ui:insert name="titulo">Cosmeticos Web</ui:insert></title>
+</h:head>
+<h:body>
+	<!-- Begin Body -->
+	<div>
+		<nav class="navbar navbar-inverse" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<h:link styleClass="navbar-brand" value="Cosméticos Aroma"
+					outcome="/index" />
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown alerts-dropdown"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown"><i
+							class="fa fa-bell"></i> Fornecedores <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><h:link value="Cadastar"
+									outcome="/admin/cadastrarFornecedor" /></li>
+							<li><h:link value="Listar"
+									outcome="/admin/listarFornecedores" /></li>
+						</ul></li>
+					<li class="dropdown alerts-dropdown"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown"><i
+							class="fa fa-bell"></i> Cosmeticos <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><h:link value="Cadastar"
+									outcome="/admin/cadastrarCosmetico" /></li>
+							<li><h:link value="Listar" outcome="/admin/listarCosmeticos" /></li>
+						</ul></li>
+					<li><h:link value="Logar" outcome="/login" /></li>
+				</ul>
+				<form class="navbar-form navbar-right"></form>
+			</div>
+		</div>
+		</nav>
+	</div>
+
+
+	<div class="container-fluid">
+
+		<div class="row row-offcanvas row-offcanvas-left">
+
+			<div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar"
+				role="navigation">
+
+				<ul class="nav nav-sidebar">
+					<li><h:link value="Home" outcome="/index" /></li>
+				</ul>
+
+				<ul class="nav nav-sidebar">
+					<li><h:link value="Lista de Produtos" outcome="/listaProdutos" /></li>
+					<li><h:link value="Logar" outcome="/login" /></li>
+				</ul>
+
+			</div>
+			<!--/span-->
+
+			<div class="col-sm-9 col-md-10 main">
+
+				<!--toggle sidebar button-->
+				<p class="visible-xs">
+					<button type="button" class="btn btn-primary btn-xs"
+						data-toggle="offcanvas">
+						<i class="glyphicon glyphicon-chevron-left"></i>
+					</button>
+				</p>
+
+				<h1 class="page-header">
+					<ui:insert name="titulo">Entrar</ui:insert>
+				</h1>
+
+				<div class="row placeholders">
+					<ui:insert name="conteudo"> OK </ui:insert>
+				</div>
+
+			</div>
+			<!--/row-->
+		</div>
+	</div>
+	<!--/.container-->
+
+
+</h:body>
+
+</html>

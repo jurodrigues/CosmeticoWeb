@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="../WEB-INF/templates/padrao.xhtml">
+	<ui:define name="titulo">Listar cosmeticoses</ui:define>
+
+	<ui:define name="conteudo">
+		<h:form>
+			<h:dataTable value="#{cosmeticosMb.cosmeticos}" var="cosmeticos"
+				styleClass="table">
+				<h:column>
+					<f:facet name="header">Código</f:facet>
+					<h:outputText value="#{cosmeticos.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{cosmeticos.nome}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Descricao</f:facet>
+					<h:outputText value="#{cosmeticos.descricao}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Valor</f:facet>
+					<h:outputText value="#{cosmeticos.valor}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Fornecedor</f:facet>
+					<h:outputText value="#{cosmeticos.fornecedor.nome}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"></f:facet>
+					<h:commandLink action="#{cosmeticosMb.editar(cosmeticos.id)}" styleClass="btn">
+						Editar
+					</h:commandLink>
+				</h:column>
+				<h:column>
+					<f:facet name="header"></f:facet>
+					<h:commandLink action="#{cosmeticosMb.excluir(cosmeticos.id)}" styleClass="btn">
+						Excluir
+					</h:commandLink>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

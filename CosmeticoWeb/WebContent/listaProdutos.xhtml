@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="WEB-INF/templates/padrao.xhtml">
+	<ui:define name="titulo">Cosmeticos Aroma</ui:define>
+
+	<ui:define name="conteudo">
+		<ui:repeat var="cosmetico" value="#{cosmeticosMb.cosmeticos}">
+			<div class="row" style="width: 150px; float: left; margin-right: 20px;">
+				<h:link outcome="cosmetico">
+					<h:graphicImage styleClass="img-responsive"
+						rendered="#{!empty cosmetico.foto}"
+						value="#{cosmeticosMb.getCaminhoRelativo(cosmetico.foto)}" />
+					<f:param name="idProduto" value="#{cosmetico.id}" />
+				</h:link>
+				<h:link outcome="cosmetico">
+					<h:outputLabel value="#{cosmetico.nome}" />
+					<f:param name="idProduto" value="#{cosmetico.id}" />
+				</h:link>
+			</div>
+		</ui:repeat>
+	</ui:define>
+</ui:composition>
+</html>
